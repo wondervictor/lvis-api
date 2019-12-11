@@ -1,5 +1,5 @@
 import datetime
-import logging
+# import logging
 from collections import OrderedDict
 from collections import defaultdict
 
@@ -20,7 +20,7 @@ class LVISEval:
             or list of dict)
             iou_type (str): segm or bbox evaluation
         """
-        self.logger = logging.getLogger(__name__)
+        # self.logger = logging.getLogger(__name__)
 
         if iou_type not in ["bbox", "segm"]:
             raise ValueError("iou_type: {} is not supported.".format(iou_type))
@@ -117,8 +117,8 @@ class LVISEval:
         Run per image evaluation on given images and store results
         (a list of dict) in self.eval_imgs.
         """
-        self.logger.info("Running per image evaluation.")
-        self.logger.info("Evaluate annotation type *{}*".format(self.params.iou_type))
+        print("Running per image evaluation.")
+        print("Evaluate annotation type *{}*".format(self.params.iou_type))
 
         self.params.img_ids = list(np.unique(self.params.img_ids))
 
@@ -294,10 +294,10 @@ class LVISEval:
         """Accumulate per image evaluation results and store the result in
         self.eval.
         """
-        self.logger.info("Accumulating evaluation results.")
+        print("Accumulating evaluation results.")
 
         if not self.eval_imgs:
-            self.logger.warn("Please run evaluate first.")
+            print("Please run evaluate first.")
 
         if self.params.use_cats:
             cat_ids = self.params.cat_ids

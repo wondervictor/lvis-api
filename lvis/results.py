@@ -23,15 +23,15 @@ class LVISResults(LVIS):
         else:
             raise TypeError("Unsupported type {} of lvis_gt.".format(lvis_gt))
 
-        self.logger = logging.getLogger(__name__)
-        self.logger.info("Loading and preparing results.")
+        # self.logger = logging.getLogger(__name__)
+        print("Loading and preparing results.")
 
         if isinstance(results, str):
             result_anns = self._load_json(results)
         else:
             # this path way is provided to avoid saving and loading result
             # during training.
-            self.logger.warn("Assuming user provided the results in correct format.")
+            print("Assuming user provided the results in correct format.")
             result_anns = results
 
         assert isinstance(result_anns, list), "results is not a list."

@@ -23,7 +23,7 @@ class LVISVis:
             to be displayed will be downloaded to the current working dir.
             dpi (int): dpi for figure size setup
         """
-        self.logger = logging.getLogger(__name__)
+        # self.logger = logging.getLogger(__name__)
 
         if isinstance(lvis_gt, LVIS):
             self.lvis_gt = lvis_gt
@@ -44,7 +44,7 @@ class LVISVis:
         self.dpi = dpi
         self.img_dir = img_dir if img_dir else '.'
         if self.img_dir == '.':
-            self.logger.warn("img_dir not specified. Images will be downloaded.")
+            print("img_dir not specified. Images will be downloaded.")
 
     def coco_segm_to_poly(self, _list):
         x = _list[0::2]
@@ -128,7 +128,7 @@ class LVISVis:
             classes.append(ann["category_id"])
 
         if len(boxes) == 0:
-            self.logger.warn("No gt anno found for img_id: {}".format(img_id))
+            print("No gt anno found for img_id: {}".format(img_id))
             return
 
         boxes = np.asarray(boxes)
@@ -164,7 +164,7 @@ class LVISVis:
             scores.append(ann["score"])
 
         if len(boxes) == 0:
-            self.logger.warn("No gt anno found for img_id: {}".format(img_id))
+            print("No gt anno found for img_id: {}".format(img_id))
             return
 
         boxes = np.asarray(boxes)
